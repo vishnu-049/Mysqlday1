@@ -1,0 +1,43 @@
+create database bankaccount;
+use bankaccount;
+create table accounts (
+name varchar(255),
+acc_id int,
+balance int);
+
+insert into  accounts(name, acc_id, balance)
+values ("ravi" , 1 , 10000);
+insert into  accounts(name, acc_id, balance)
+values ("sham" , 2 , 8000);
+
+insert into  accounts(name, acc_id, balance)
+values ("Roy" , 3 , 5000);
+select * from accounts;
+
+start transaction;
+set autocommit =0;
+SET SQL_SAFE_UPDATES = 0;
+
+update accounts
+set balance=balance-2000
+where acc_id = 1;
+
+savepoint spq1;
+
+update accounts 
+set balance = balance+2000
+where acc_id = 2;
+
+rollback to spq1;
+commit;
+set autocommit = 1;
+
+
+select * from accounts;
+
+
+
+
+
+
+

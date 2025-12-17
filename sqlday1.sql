@@ -19,6 +19,10 @@ select*from students where marks>70;
 select * from students where age Between 21 and 24;
 select * from students ORDER By marks DESC;
 select count(*) as total_Students from students;
+select * from students order by department Desc;
+select * from students order by S_name Desc;
+select * from students order by s_name, age desc;
+select * from students where age=22 order by S_name desc limit 2;
 
 update students
 set marks=55
